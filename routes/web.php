@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProvisionServer;
+use App\Http\Controllers\ArticleDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,9 @@ use App\Http\Controllers\ProvisionServer;
 |
 */
 
+Route::get('/articles', [ArticleDashboardController::class, 'showAll']);
 
-Route::get('/articles', [ProvisionServer::class, 'showAll']);
-Route::get('/', [ProvisionServer::class, 'showAll']);
+Route::get('/', [ArticleDashboardController::class, 'showAll']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
