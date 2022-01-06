@@ -14,9 +14,21 @@ use App\Http\Controllers\ArticleDashboardController;
 |
 */
 
+Route::get('/dashboard/articles', [ArticleDashboardController::class, 'showAll']);
+Route::get('/dashboard/articles/{id}', [ArticleDashboardController::class, 'show']);
+
+Route::get('/dashboard/create', [ArticleDashboardController::class, 'create']);
+Route::post('/dashboard/create/?{title}&{description}', [ArticleDashboardController::class, 'store']);
+
+Route::delete('/dashboard/delete/{id}', [ArticleDashboardController::class, 'delete']);
+Route::put('/dashboard/update/{id}', [ArticleDashboardController::class, 'update']);
+
+
 Route::get('/articles', [ArticleDashboardController::class, 'showAll']);
+Route::get('/articles/{id}', [ArticleDashboardController::class, 'show']);
 
 Route::get('/', [ArticleDashboardController::class, 'showAll']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

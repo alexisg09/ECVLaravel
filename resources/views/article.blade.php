@@ -7,12 +7,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @foreach ($articles as $article)
-                <div class="p-6 mt-8 bg-white border-b border-indigo-400 ">
-                    <p>This is the title {{ $article->title }}</p>
-                </div>
-                <a href="{{route('dashboard/articles')}}"></a>
-            @endforeach
+            <div class="p-6 mt-8 bg-white border-b border-indigo-400 ">
+                <p> {{ $article->title }}</p>
+                <p> {{ $article->description }} </p>
+            </div>
         </div>
     </div>
 </x-app-layout>
