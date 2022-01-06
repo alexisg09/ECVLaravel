@@ -26,6 +26,12 @@ class ArticleDashboardController extends Controller
         return view('article', ['article' => $article]);
     }
 
+    public function admin_show($id)
+    {
+        $article = Article::find($id);
+        return view('update', ['article' => $article]);
+    }
+
     public function showAll()
     {
         $articles = Article::all();
@@ -42,20 +48,26 @@ class ArticleDashboardController extends Controller
     public function store($title, $description)
     {
         Article::create(['title' => $title, 'description' => $description]);
-        $this->showAll();
+        return redirect('/articles/');
+
+//        $this->showAll();
     }
 
-    public function update($id, $title, $description)
+    public function update(Request $request, $id)
     {
         $articleToUpdate = Article::find($id);
-        $articleToUpdate->title = $title;
-        $articleToUpdate->description = $description;
-        $articleToUpdate->save();
+        $articleToUpdate->update([
+            'title' => $request->input('title'),
+            'description' => $request->input('description')
+        ]);
+        return redirect('/articles/');
     }
 
     public function delete($id)
     {
         $articleToDelete = Article::find($id);
         $articleToDelete->delete();
+        return redirect('/articles/');
+
     }
 }

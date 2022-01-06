@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="p-6 mt-8 bg-white border-b border-indigo-400 ">
-                <form method="post" action="{{ route('/dashboard/create/?{title}&{description}') }}">
+                <form method="post" action="{{ route('/dashboard/articles/create/') }}">
                     <input type="text" name="title"/>
                     <br>
                     <textarea name="description"></textarea>
